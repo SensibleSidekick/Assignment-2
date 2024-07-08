@@ -12,6 +12,7 @@ const oldPointStructure = {
   10: ['Q', 'Z']
 };
 
+
 function oldScrabbleScorer(word) {
 	word = word.toUpperCase();
 	let letterPoints = "";
@@ -26,33 +27,92 @@ function oldScrabbleScorer(word) {
  
 	  }
 	}
+   console.log(letterPoints);
 	return letterPoints;
  }
 
 // your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
-
+let userWord = '';
 function initialPrompt() {
-   console.log("Let's play some scrabble! Enter a word:");
+   userWord = input.question(`Let's play some Scrabble! \n\nEnter a word to score: `);
+   return userWord;
 };
+
+let userScore = 0;
 
 let newPointStructure;
 
-let simpleScorer;
+let simpleScorer = function(word){
+   userScore = word.length
+   console.log(`Your score for ${word} is ${userScore}`);
+   
+const simpleScoreStructure = {
+   name: "Simple Score",
+   description: "Each letter is worth 1 point.",
+   scorefunction: simpleScorer
+  
+}
+};
 
-let vowelBonusScorer;
+let vowelBonusScorer = function(word){
+   let vowels =  ['A', 'E', 'I', 'O', 'U'];
+   let consonants = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z'];
+   let letterPoints = 0
+   wordCheck = word.toUpperCase();
+ 
+    for (i = 0; i < word.length; i++) {
+      if (vowels.includes(wordCheck[i])) {
+         letterPoints = letterPoints + 3;
+      } else if (consonants.includes(wordCheck[i])) {
+         letterPoints = letterPoints + 1; 
+      } else { 
+        return console.log (`\nError: Invalid input. Please try again.`);
+      }
+    }
+    
+    return  console.log(`Your score for ${word} is ${letterPoints}`);
+};
+
+const vowelScoreStructure = {
+   name: "Bonus Vowels",
+   description: "Vowels are 3 pts, consonants are 1 pt.",
+   scoreFunction: vowelBonusScorer
+};
 
 let scrabbleScorer;
 
-const scoringAlgorithms = [];
+const scoringAlgorithms = [simpleScoreStructure, vowelScoreStructure, oldPointStructure];
 
-function scorerPrompt() {}
+function scorerPrompt() {
+let userScorer = input.question(
+   `\nWhich scoring algorithm would you like to use?\n
+   \n 
+   0 - Simple: One point per character \n
+   1- Vowel Bonus: Vowels are worth 3 points.\n
+   2 - Scrabble: Uses scrabble point system\n
+   Enter 0, 1, or 2: `);
+  
 
-function transform() {};
+if (userScorer === 0) {
+
+   } else if (userScorer === 1) {
+
+   } else if (userScorer === 2) {
+
+   } else {
+      return console.log(`\nError: Invalid input. Please try again.`)
+   }
+
+}
+
+function transform() {
+
+};
 
 function runProgram() {
    initialPrompt();
-   
+   scorerPrompt();
 }
 
 // Don't write any code below this line //
