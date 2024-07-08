@@ -2,16 +2,16 @@
 
 const input = require("readline-sync");
 
-let simpleScorer = function(word){
-   userScore = word.length
-   console.log(`Your score for '${word}' is ${userScore}`);
+let simpleScorer = function (word){
+   userScore = word.length;
+   return console.log(`Your score for '${word}' is ${userScore}`);
 };
 
 
 let vowelBonusScorer = function(word){
    let vowels =  ['A', 'E', 'I', 'O', 'U'];
    let consonants = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z'];
-   let letterPoints = 0
+   let letterPoints = 0;
    wordCheck = word.toUpperCase();
  
     for (i = 0; i < word.length; i++) {
@@ -72,7 +72,7 @@ let newPointStructure;
 let simpleScoreStructure = {
    name: "Simple Score",
    description: "Each letter is worth 1 point.",
-   scorefunction: simpleScorer
+   scoreFunction: simpleScorer
   
 };
 
@@ -92,11 +92,7 @@ const scoringAlgorithms = [simpleScoreStructure, vowelScoreStructure, scrabbleSc
 
 function scorerPrompt() {
 let userScorer = Number(input.question(
-   `\nWhich scoring algorithm would you like to use?\n
-   \n 
-   0 - Simple: One point per character \n
-   1 - Vowel Bonus: Vowels are worth 3 points.\n
-   2 - Scrabble: Uses scrabble point system\n
+   `\nWhich scoring algorithm would you like to use?\n\n0 - Simple: One point per character \n1 - Vowel Bonus: Vowels are worth 3 points.\n2 - Scrabble: Uses scrabble point system\n
    Enter 0, 1, or 2: `));
   
 
@@ -122,6 +118,7 @@ let userScorer = Number(input.question(
 function transform() {
 
 };
+
 
 function runProgram() {
    initialPrompt();
