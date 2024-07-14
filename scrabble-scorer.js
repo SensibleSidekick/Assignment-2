@@ -4,8 +4,8 @@ const input = require("readline-sync");
 
 function transform(obj) {
    let keys = Object.keys(obj); //grabbing the numbers to set as scores later
-   let letters; //initializing for future use
-   let structure = {}; //initializing for future use
+   let letters; //declaring for future use
+   let structure = {}; //declaring for future use
  
   for ( let key in obj) { //time to iterate through the object
     letters = obj[key]; //setting the variable to the value of the current key
@@ -42,8 +42,8 @@ let simpleScorer = function (word){
 let vowelBonusScorer = function(word){
    let vowels =  ['A', 'E', 'I', 'O', 'U']; //this and the following line are setting up the arrays to go through for scoring.
    let consonants = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z'];
-   let wordCheck = word.toUpperCase(); //setting up a variable to manipulate the user word without losing the word itself.
-   let score = 0; //setting up score variable.
+   let wordCheck = word.toUpperCase(); //declaring and initializing a variable to manipulate the user word without losing the word itself.
+   let score = 0; //declaring and initializing score variable.
  
     for (i = 0; i < word.length; i++) { //looping conditions through the word
       if (vowels.includes(wordCheck[i])) { //checking each letter in the word for either vowel or consonant via arrays of each. 
@@ -60,8 +60,8 @@ let vowelBonusScorer = function(word){
 };
 
 function scrabbleScorer(word) {
-	let wordCheck = word.toLowerCase(); //variable to manipulate word without changing the word itself. set to lower case for the object it is iterating against.
-	let score = 0; //initializing score.
+	let wordCheck = word.toLowerCase(); //declaring and initializing a variable to manipulate word without changing the word itself. set to lower case for the object it is iterating against.
+	let score = 0; //declaring and initializingscore.
   while (wordCheck.length !== 0){ //while loop ending condition, ending once the wordCheck variable has been emptied of all its letters.
 	  for (const letter in newPointStructure) { //iterating through the newPointStructure object          
 		 if (wordCheck[0] === letter) { //checking the inidcated letter index against the current letter in the object being looked at. 
@@ -76,7 +76,7 @@ function scrabbleScorer(word) {
 
 // your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
-let userWord = ''; //initializing here so it is avaiable for future use elsewhere. 
+let userWord = ''; //declaring here so it is avaiable for future use elsewhere. 
 function initialPrompt() {
    userWord = input.question(`Let's play some Scrabble! \n\nEnter a word to score: `); //getting word from user input
    return userWord; // returning the user input.
@@ -107,8 +107,8 @@ const scoringAlgorithms = [simpleScoreStructure, vowelScoreStructure, scrabble];
 function scorerPrompt() {
    
 let userScorer = Number(input.question(`\nWhich scoring algorithm would you like to use?\n\n0 - Simple: One point per character \n1 - Vowel Bonus: Vowels are worth 3 points.\n2 - Scrabble: Uses scrabble point system\nEnter 0, 1, or 2: `));
-  
-
+  //declaring and initializing variable to bring in user input for selecting a scorer algorithm and turning it into a number to compare below.
+//Selecting with scorer depending on what they picked. 
    if (userScorer === 0) {
     return `${scoringAlgorithms[0].scorerFunction(userWord)}`;
       
